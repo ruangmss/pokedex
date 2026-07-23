@@ -1,0 +1,25 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+html {
+  background-color: var(--background);
+}
+
+body {
+  min-height: 100vh;
+}
+
+@media (max-width: 1300px) {
+  .container {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 25px;
+  }
+}
