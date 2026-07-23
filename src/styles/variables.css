@@ -1,0 +1,86 @@
+:root {
+  /* Font families */
+  --primary-font: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --secondary-font: 'Spectral', Georgia, serif;
+
+  /* Primary font styles */
+  --primary-sm: 400 0.875rem/1.4 var(--primary-font);
+  --primary-md: 400 1rem/1.5 var(--primary-font);
+  --primary-lg: 500 1.125rem/1.4 var(--primary-font);
+  --primary-xl: 600 1.5rem/1.25 var(--primary-font);
+
+  /* Secondary font styles */
+  --secondary-sm: 400 1rem/1.5 var(--secondary-font);
+  --secondary-md: 600 1.5rem/1.3 var(--secondary-font);
+  --secondary-lg: 700 2rem/1.2 var(--secondary-font);
+  --secondary-xl: 700 3rem/1.1 var(--secondary-font);
+
+  /* Base colors */
+  --white: #ffffff;
+  --black: #0b0b0f;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-muted: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  /* Brand / accent */
+  --brand: #f43f5e;
+  --brand-hover: #e11d48;
+  --brand-soft: #ffe4e6;
+  --accent: #6366f1;
+
+  /* Feedback */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+
+  /* Pokemon type colors */
+  --type-normal: #a8a77a;
+  --type-fire: #ee8130;
+  --type-water: #6390f0;
+  --type-electric: #f7d02c;
+  --type-grass: #7ac74c;
+  --type-ice: #96d9d6;
+  --type-fighting: #c22e28;
+  --type-poison: #a33ea1;
+  --type-ground: #e2bf65;
+  --type-flying: #a98ff3;
+  --type-psychic: #f95587;
+  --type-bug: #a6b91a;
+  --type-rock: #b6a136;
+  --type-ghost: #735797;
+  --type-dragon: #6f35fc;
+  --type-dark: #705746;
+  --type-steel: #b7b7ce;
+  --type-fairy: #d685ad;
+
+  /* Stat bar colors */
+  --stat-hp: #ef4444;
+  --stat-attack: #f97316;
+  --stat-defense: #eab308;
+  --stat-special-attack: #3b82f6;
+  --stat-special-defense: #22c55e;
+  --stat-speed: #ec4899;
+
+  /* Spacing / margins */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Borders */
+  --sm-border: 5px;
+  --md-border: 10px;
+  --lg-border: 15px;
+  --xl-border: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 24px rgba(15, 23, 42, 0.1);
+}
