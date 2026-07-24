@@ -1,7 +1,12 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 40px 20px;
+}
+
+.title {
+  font: var(--primary-xl);
+  color: var(--text-primary);
 }
 
 html {
@@ -14,12 +19,6 @@ body {
 
 @media (max-width: 1300px) {
   .container {
-    padding: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 25px;
+    padding: 30px 25px;
   }
 }

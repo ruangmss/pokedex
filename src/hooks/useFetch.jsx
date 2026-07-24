@@ -7,12 +7,15 @@ const useFetch = () => {
 
   // useCallback para manter a mesma referência entre renderizações
   const request = React.useCallback(async (url, options) => {
+    let response;
+    let json;
+
     try {
       setError('');
       setLoading(true);
 
-      const response = await fetch(url, options);
-      const json = await response.json();
+      response = await fetch(url, options);
+      json = await response.json();
 
       if (!response.ok) {
         throw new Error(
@@ -29,6 +32,8 @@ const useFetch = () => {
     } finally {
       setLoading(false);
     }
+
+    return { response, json };
   }, []);
 
   return { request, data, error, loading };
