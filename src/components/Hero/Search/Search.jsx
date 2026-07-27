@@ -1,9 +1,15 @@
 import React from "react";
 import "./Search.css";
 import useFetch from "../../../hooks/useFetch";
-import { POKEMON_GET, TYPE_GET, GENERATION_GET } from "../../../api/api";
 
-const Search = () => {
+const Search = ({
+  nameOrId,
+  type,
+  generation,
+  setNameOrId,
+  setType,
+  setGeneration,
+}) => {
   const types = [
     { value: "normal", label: "Normal" },
     { value: "fire", label: "Fogo" },
@@ -36,35 +42,6 @@ const Search = () => {
     { value: "8", label: "Geração VIII" },
     { value: "9", label: "Geração IX" },
   ];
-
-  const [nameOrId, setNameOrId] = React.useState("");
-  const [type, setType] = React.useState("");
-  const [generation, setGeneration] = React.useState("");
-
-  const { data, error, loading, request } = useFetch();
-
-  React.useEffect(() => {
-    async function fetchData() {
-      let api;
-
-      if (nameOrId.trim()) {
-        api = POKEMON_GET(nameOrId);
-      } else if (type) {
-        api = TYPE_GET(type);
-      } else if (generation) {
-        api = GENERATION_GET(generation);
-      } else {
-        return;
-      }
-
-      const { url, options } = api;
-      const { json } = await request(url, options);
-
-      console.log(json);
-    }
-
-    fetchData();
-  }, [nameOrId, type, generation, request]);
 
   function setOnChange(setter) {
     return ({ target }) => {

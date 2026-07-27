@@ -2,7 +2,7 @@ import React from "react";
 import "./Hero.css";
 import Search from "./Search/Search";
 
-const Hero = () => {
+const Hero = (props) => {
   return (
     <section className="hero container">
       <h1 className="title">Pokédex</h1>
@@ -12,7 +12,7 @@ const Hero = () => {
         <a href="https://pokeapi.co/">PokéAPI</a>.
       </p>
 
-      <Search />
+      <Search {...props} />
     </section>
   );
 };
