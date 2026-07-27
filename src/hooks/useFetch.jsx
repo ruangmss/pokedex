@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const useFetch = () => {
   const [data, setData] = React.useState(null);
-  const [error, setError] = React.useState('');
+  const [error, setError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
   // useCallback para manter a mesma referência entre renderizações
@@ -11,7 +11,8 @@ const useFetch = () => {
     let json;
 
     try {
-      setError('');
+      setError("");
+      setData(null);
       setLoading(true);
 
       response = await fetch(url, options);
