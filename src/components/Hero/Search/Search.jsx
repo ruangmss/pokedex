@@ -24,18 +24,6 @@ const Search = ({ nameOrId, type, generation, setNameOrId, setType, setGeneratio
     { value: 'fairy', label: 'Fada' },
   ];
 
-  const generations = [
-    { value: '1', label: '1ª Geração' },
-    { value: '2', label: '2ª Geração' },
-    { value: '3', label: '3ª Geração' },
-    { value: '4', label: '4ª Geração' },
-    { value: '5', label: '5ª Geração' },
-    { value: '6', label: '6ª Geração' },
-    { value: '7', label: '7ª Geração' },
-    { value: '8', label: '8ª Geração' },
-    { value: '9', label: '9ª Geração' },
-  ];
-
   function submitForm(event) {
     event.preventDefault();
   }
@@ -48,33 +36,22 @@ const Search = ({ nameOrId, type, generation, setNameOrId, setType, setGeneratio
 
   return (
     <form className="search" onSubmit={submitForm}>
-      <input placeholder="Buscar por nome ou id..." value={nameOrId} onChange={setOnChange(setNameOrId)} />
+      <label htmlFor="pokemon">
+        Nome / ID
+        <input id="pokemon" value={nameOrId} onChange={setOnChange(setNameOrId)} />
+      </label>
 
-      <div className="search-selects">
-        <label htmlFor="pokemon-type">
-          Tipo
-          <select id="pokemon-type" value={type} onChange={setOnChange(setType)}>
-            <option value="">Todos os tipos</option>
-            {types.map(({ value, label }) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label htmlFor="pokemon-generation">
-          Geração
-          <select id="pokemon-generation" value={generation} onChange={setOnChange(setGeneration)}>
-            <option value="">Todas as gerações</option>
-            {generations.map(({ value, label }) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
+      <label htmlFor="pokemon-type">
+        Tipo
+        <select id="pokemon-type" value={type} onChange={setOnChange(setType)}>
+          <option value="">Todos os tipos</option>
+          {types.map(({ value, label }) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </label>
     </form>
   );
 };

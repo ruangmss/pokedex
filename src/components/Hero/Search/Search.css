@@ -1,23 +1,18 @@
 .search {
   display: flex;
-  flex-direction: column;
   gap: var(--spacing-sm);
   max-width: 500px;
   width: 100%;
-}
-
-.search-selects {
-  display: flex;
-  gap: var(--spacing-sm);
   flex-wrap: wrap;
 }
 
-.search-selects label {
+.search label {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  flex: 1 1 200px;
   font: var(--primary-sm);
+  flex: 1 1 180px;
+  min-width: 0;
 }
 
 .search input {
@@ -33,7 +28,7 @@
   font: var(--primary-sm);
 }
 
-.search-selects select {
+.search select {
   padding: 8px 12px 8px 12px;
   background-size: 15px;
   border-radius: var(--md-border);
