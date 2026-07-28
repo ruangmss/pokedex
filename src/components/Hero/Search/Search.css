@@ -22,7 +22,7 @@
 
 .search input {
   display: flex;
-  background-image: url("../../../assets/search.svg");
+  background-image: url('../../../assets/icons/search.svg');
   background-repeat: no-repeat;
   background-position: 10px center;
   padding: 8px 12px 8px 35px;

@@ -55,6 +55,24 @@
   --type-dark: #705746;
   --type-steel: #b7b7ce;
   --type-fairy: #d685ad;
+  --type-normal-bg: #f3f2e8;
+  --type-fire-bg: #fdf0e7;
+  --type-water-bg: #eaf2ff;
+  --type-electric-bg: #fff9df;
+  --type-grass-bg: #edf8e8;
+  --type-ice-bg: #eefafb;
+  --type-fighting-bg: #fbe9e8;
+  --type-poison-bg: #f6ebf7;
+  --type-ground-bg: #faf4e3;
+  --type-flying-bg: #f1efff;
+  --type-psychic-bg: #fdebf2;
+  --type-bug-bg: #f4f8e7;
+  --type-rock-bg: #f6f3e5;
+  --type-ghost-bg: #efedf8;
+  --type-dragon-bg: #efe9ff;
+  --type-dark-bg: #f1efed;
+  --type-steel-bg: #f3f4f7;
+  --type-fairy-bg: #fceff4;
 
   /* Cores Barra de Status */
   --stat-hp: #ef4444;

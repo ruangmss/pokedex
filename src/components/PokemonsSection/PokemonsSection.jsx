@@ -3,6 +3,7 @@ import useFetch from '../../hooks/useFetch';
 import PokemonCard from './PokemonCard/PokemonCard';
 import Loading from '../Loading/Loading';
 import Error from '../Error/Error';
+import './PokemonsSection.css';
 import { POKEMON_GET, TYPE_GET, GENERATION_GET, POKEMON_LIST } from '../../api/api';
 
 const PokemonsSection = ({ nameOrId, type, generation }) => {
@@ -60,9 +61,9 @@ const PokemonsSection = ({ nameOrId, type, generation }) => {
   }
 
   return (
-    <section className="pokemons-section">
+    <section className="pokemons-section container">
       {pokemonsList.map((pokemon) => (
-        <PokemonCard key={pokemon.name} pokemonObject={pokemon} />
+        <PokemonCard key={pokemon.name} pokemon={pokemon} />
       ))}
     </section>
   );
