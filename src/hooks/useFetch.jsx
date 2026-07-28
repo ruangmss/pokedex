@@ -1,17 +1,18 @@
-import React from "react";
+import js from '@eslint/js';
+import React from 'react';
 
 const useFetch = () => {
   const [data, setData] = React.useState(null);
-  const [error, setError] = React.useState("");
+  const [error, setError] = React.useState('');
   const [loading, setLoading] = React.useState(false);
 
   // useCallback para manter a mesma referência entre renderizações
   const request = React.useCallback(async (url, options) => {
-    let response;
-    let json;
+    let response = null;
+    let json = null;
 
     try {
-      setError("");
+      setError('');
       setData(null);
       setLoading(true);
 
@@ -21,8 +22,8 @@ const useFetch = () => {
       if (!response.ok) {
         throw new Error(
           json.message
-            ? `Ocorreu um erro: ${json.message}`
-            : `Erro no sistema! Status: ${response.status}. Por favor, entre em contato com a equipe de desenvolvimento.`,
+            ? `${json.message}`
+            : `Status: ${response.status}. Por favor, entre em contato com a equipe de desenvolvimento.`,
         );
       }
 
@@ -30,6 +31,7 @@ const useFetch = () => {
     } catch (error) {
       setError(error.message);
       setData(null);
+      json = null;
     } finally {
       setLoading(false);
     }
