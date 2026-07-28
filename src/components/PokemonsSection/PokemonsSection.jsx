@@ -12,6 +12,11 @@ const PokemonsSection = ({ nameOrId, type, generation }) => {
   const [debouncedNameOrId, setDebouncedNameOrId] = React.useState(nameOrId);
 
   React.useEffect(() => {
+    if (!nameOrId.trim()) {
+      setDebouncedNameOrId('');
+      return;
+    }
+
     const timeout = setTimeout(() => {
       setDebouncedNameOrId(nameOrId);
     }, 500);

@@ -1,4 +1,3 @@
-import js from '@eslint/js';
 import React from 'react';
 
 const useFetch = () => {
@@ -17,16 +16,16 @@ const useFetch = () => {
       setLoading(true);
 
       response = await fetch(url, options);
-      json = await response.json();
 
       if (!response.ok) {
         throw new Error(
-          json.message
-            ? `${json.message}`
+          response.status === 404
+            ? 'Pokémon não encontrado.'
             : `Status: ${response.status}. Por favor, entre em contato com a equipe de desenvolvimento.`,
         );
       }
 
+      json = await response.json();
       setData(json);
     } catch (error) {
       setError(error.message);
