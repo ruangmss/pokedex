@@ -91,7 +91,7 @@ const PokemonCard = ({ pokemon }) => {
           <span
             key={item.type.name}
             style={{
-              border: `0.5px solid var(--type-${item.type.name})`,
+              border: `1px solid color-mix(in srgb, var(--type-${item.type.name}) 20%, white)`,
               color: `var(--type-${item.type.name})`,
               backgroundColor: `var(--type-${item.type.name}-bg)`,
             }}
