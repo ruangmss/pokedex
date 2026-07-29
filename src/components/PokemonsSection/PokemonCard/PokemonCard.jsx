@@ -1,7 +1,7 @@
 import React from 'react';
 import './PokemonCard.css';
 import useFetch from '../../../hooks/useFetch';
-import { POKEMON_GET } from '../../../api/api';
+import { POKEMON_GET, POKEMON_SPECIES_GET } from '../../../api/api';
 import { Link } from 'react-router-dom';
 import fallback from '../../../assets/images/fallback-image.webp';
 
@@ -40,7 +40,7 @@ const PokemonCard = ({ pokemon }) => {
   };
 
   const { data: pokemonData, request: requestPokemon } = useFetch();
-  const { data: specie, request: requestSpecie } = useFetch();
+  const { data: specieData, request: requestSpecie } = useFetch();
 
   React.useEffect(() => {
     async function fetchPokemon() {
@@ -52,14 +52,13 @@ const PokemonCard = ({ pokemon }) => {
   }, [pokemon.name, requestPokemon]);
 
   React.useEffect(() => {
-    if (!pokemonData?.species?.url) return; // Na primeira renderização é null
-
     async function fetchSpecie() {
-      await requestSpecie(pokemonData.species.url);
+      const { url, options } = POKEMON_SPECIES_GET(pokemon.name);
+      await requestSpecie(url, options);
     }
 
     fetchSpecie();
-  }, [pokemonData, requestSpecie]);
+  }, [pokemon.name, requestSpecie]);
 
   if (!pokemonData) {
     return null;
@@ -79,8 +78,9 @@ const PokemonCard = ({ pokemon }) => {
 
       <div className="pokemon-card-data">
         <span>#{pokemonData.id}</span>
-        {specie?.generation?.name && (
-          <span className="pokemon-card-data-generation">{generations[specie.generation.name]}</span>
+        {/* Como não há verificação do tipo "if (!specieData)", é necessário verificar se o dado existe */}
+        {specieData?.generation?.name && (
+          <span className="pokemon-card-data-generation">{generations[specieData.generation.name]}</span>
         )}
       </div>
 
