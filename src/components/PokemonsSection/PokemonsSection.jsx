@@ -7,7 +7,7 @@ import './PokemonsSection.css';
 import { TYPE_GET, POKEMON_LIST } from '../../api/api';
 import MessageBox from '../MessageBox/MessageBox';
 
-const PokemonsSection = ({ nameOrId, type }) => {
+const PokemonsSection = ({ nameOrId, type, offset, setTotalPages }) => {
   const { error, loading, request } = useFetch();
 
   const [pokemonsList, setPokemonsList] = React.useState([]);
@@ -31,14 +31,16 @@ const PokemonsSection = ({ nameOrId, type }) => {
 
   React.useEffect(() => {
     async function fetchAllPokemons() {
-      const api = POKEMON_LIST(10000);
+      const api = POKEMON_LIST(10000, 0);
       const { json } = await request(api.url, api.options);
 
       if (!json) {
         return;
       }
 
-      setAllPokemons(api.normalize(json));
+      const normalizedPokemons = api.normalize(json);
+
+      setAllPokemons(normalizedPokemons);
     }
 
     fetchAllPokemons();
@@ -68,11 +70,16 @@ const PokemonsSection = ({ nameOrId, type }) => {
         return matchesSearch;
       });
 
-      setPokemonsList(filteredList.slice(0, 20));
+      setTotalPages(Math.ceil(filteredList.length / 20));
+
+      const startIndex = offset;
+      const endIndex = offset + 20;
+
+      setPokemonsList(filteredList.slice(startIndex, endIndex));
     }
 
     fetchPokemons();
-  }, [allPokemons, debouncedNameOrId, type, request]);
+  }, [allPokemons, debouncedNameOrId, type, request, offset, setTotalPages]);
 
   if (loading) {
     return <Loading />;

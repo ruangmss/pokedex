@@ -19,6 +19,10 @@ body {
   color: var(--text-secondary);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   text-decoration: none;
   color: inherit;
