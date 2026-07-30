@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Pokemon from './pages/Pokemon/Pokemon';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/NotFound/NotFound';
 
 const App = () => {
   return (
