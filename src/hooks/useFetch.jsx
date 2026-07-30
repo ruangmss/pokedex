@@ -20,7 +20,7 @@ const useFetch = () => {
       if (!response.ok) {
         throw new Error(
           response.status === 404
-            ? 'Pokémon não encontrado.'
+            ? 'Recurso não encontrado.'
             : `Status: ${response.status}. Por favor, entre em contato com a equipe de desenvolvimento.`,
         );
       }

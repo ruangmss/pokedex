@@ -1,0 +1,183 @@
+.skeleton-item {
+  display: block;
+  background: linear-gradient(90deg, var(--background-2) 25%, var(--border) 50%, var(--background-2) 75%);
+  background-size: 200% 100%;
+  border-radius: 6px;
+  animation: pokemon-skeleton-loading 1.4s ease-in-out infinite;
+}
+
+.skeleton-breadcrumb {
+  width: 70px;
+  height: 14px;
+}
+
+.skeleton-arrow {
+  width: 12px;
+  height: 12px;
+}
+
+.skeleton-breadcrumb-name {
+  width: 100px;
+  height: 14px;
+}
+
+.skeleton-image-container {
+  position: relative;
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+}
+
+.skeleton-shiny-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 90px;
+  height: 38px;
+  border-radius: 30px;
+}
+
+.skeleton-main-image {
+  width: min(320px, 70%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.skeleton-evolution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.skeleton-section-title {
+  width: 180px;
+  height: 24px;
+}
+
+.skeleton-evolution-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.skeleton-evolution-image {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+}
+
+.skeleton-evolution-arrow {
+  width: 30px;
+  height: 12px;
+}
+
+.skeleton-id {
+  width: 55px;
+  height: 20px;
+}
+
+.skeleton-generation {
+  width: 120px;
+  height: 30px;
+  border-radius: 30px;
+}
+
+.skeleton-name {
+  width: 230px;
+  height: 42px;
+}
+
+.skeleton-type {
+  width: 80px;
+  height: 32px;
+  border-radius: 30px;
+}
+
+.skeleton-description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-text {
+  width: 100%;
+  height: 15px;
+}
+
+.skeleton-text-short {
+  width: 65%;
+}
+
+.skeleton-data-label {
+  width: 75px;
+  height: 13px;
+}
+
+.skeleton-data-value {
+  width: 110px;
+  height: 18px;
+}
+
+.skeleton-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.skeleton-stat {
+  display: grid;
+  grid-template-columns: 90px 1fr 35px;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.skeleton-stat-name {
+  width: 75px;
+  height: 14px;
+}
+
+.skeleton-stat-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+}
+
+.skeleton-stat-value {
+  width: 30px;
+  height: 14px;
+}
+
+@keyframes pokemon-skeleton-loading {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .skeleton-image-container {
+    min-height: 340px;
+  }
+
+  .skeleton-main-image {
+    width: 230px;
+  }
+
+  .skeleton-evolution-image {
+    width: 75px;
+    height: 75px;
+  }
+
+  .skeleton-evolution-arrow {
+    width: 20px;
+  }
+
+  .skeleton-stat {
+    grid-template-columns: 75px 1fr 30px;
+    gap: var(--spacing-sm);
+  }
+}

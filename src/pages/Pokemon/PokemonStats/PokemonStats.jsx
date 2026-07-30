@@ -37,7 +37,7 @@ const PokemonStats = ({ pokemonStats, pokemonName }) => {
               <div
                 className="stat-filling"
                 style={{
-                  width: statsAnimation ? `${Math.min(item.base_stat, 100) / 2.5}%` : '0%',
+                  width: statsAnimation ? `${Math.min((item.base_stat / 255) * 100, 100)}%` : '0%',
                   backgroundColor: `var(--stat-${item.stat.name})`,
                 }}
               ></div>

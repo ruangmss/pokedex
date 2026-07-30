@@ -8,6 +8,8 @@ import arrow from '../../assets/icons/arrow.svg';
 import PokemonEvolutionChain from './PokemonEvolutionChain/PokemonEvolutionChain';
 import PokemonStats from './PokemonStats/PokemonStats';
 import NotFound from '../NotFound/NotFound';
+import PokemonSkeleton from './PokemonSkeleton/PokemonSkeleton';
+import Error from '../../components/Error/Error';
 
 const pokemonTypes = {
   normal: 'Normal',
@@ -56,7 +58,7 @@ const habitats = {
 
 const Pokemon = () => {
   const { name } = useParams();
-  const { data: pokemonData, request: requestPokemon } = useFetch();
+  const { data: pokemonData, request: requestPokemon, error: pokemonError, loading: pokemonLoading } = useFetch();
   const { data: specieData, request: requestSpecie } = useFetch();
   const { data: evolutionChainData, request: requestEvolutionChain } = useFetch();
 
@@ -102,6 +104,10 @@ const Pokemon = () => {
     fetchEvolutionChain();
   }, [specieData, requestEvolutionChain]);
 
+  if (pokemonLoading) {
+    return <PokemonSkeleton />;
+  }
+
   if (notFound) {
     return (
       <NotFound
@@ -109,6 +115,10 @@ const Pokemon = () => {
         message={`O Pokémon "${name.charAt(0).toUpperCase() + name.slice(1)}" não foi encontrado na listagem. Verifique o parâmetro e tente novamente.`}
       />
     );
+  }
+
+  if (pokemonError) {
+    return <Error error={pokemonError} />;
   }
 
   if (!pokemonData) {

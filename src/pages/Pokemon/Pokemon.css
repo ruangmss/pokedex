@@ -66,6 +66,10 @@
   align-items: center;
 }
 
+.pokemon-page-breadcrumb a {
+  transition: color 0.2s ease;
+}
+
 .id {
   color: var(--brand);
 }
@@ -158,5 +162,9 @@ hr {
 @media (hover: hover) {
   .shiny-button:hover {
     scale: 1.04;
+  }
+
+  .pokemon-page-breadcrumb a:hover {
+    color: var(--brand);
   }
 }
