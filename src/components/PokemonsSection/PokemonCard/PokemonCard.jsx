@@ -5,40 +5,40 @@ import { POKEMON_GET, POKEMON_SPECIES_GET } from '../../../api/api';
 import { Link } from 'react-router-dom';
 import fallback from '../../../assets/images/fallback-image.webp';
 
+const pokemonTypes = {
+  normal: 'Normal',
+  fire: 'Fogo',
+  water: 'Água',
+  electric: 'Elétrico',
+  grass: 'Grama',
+  ice: 'Gelo',
+  fighting: 'Lutador',
+  poison: 'Veneno',
+  ground: 'Terra',
+  flying: 'Voador',
+  psychic: 'Psíquico',
+  bug: 'Inseto',
+  rock: 'Pedra',
+  ghost: 'Fantasma',
+  dragon: 'Dragão',
+  dark: 'Sombrio',
+  steel: 'Aço',
+  fairy: 'Fada',
+};
+
+const generations = {
+  'generation-i': '1ª Geração',
+  'generation-ii': '2ª Geração',
+  'generation-iii': '3ª Geração',
+  'generation-iv': '4ª Geração',
+  'generation-v': '5ª Geração',
+  'generation-vi': '6ª Geração',
+  'generation-vii': '7ª Geração',
+  'generation-viii': '8ª Geração',
+  'generation-ix': '9ª Geração',
+};
+
 const PokemonCard = ({ pokemon }) => {
-  const pokemonTypes = {
-    normal: 'Normal',
-    fire: 'Fogo',
-    water: 'Água',
-    electric: 'Elétrico',
-    grass: 'Grama',
-    ice: 'Gelo',
-    fighting: 'Lutador',
-    poison: 'Veneno',
-    ground: 'Terra',
-    flying: 'Voador',
-    psychic: 'Psíquico',
-    bug: 'Inseto',
-    rock: 'Pedra',
-    ghost: 'Fantasma',
-    dragon: 'Dragão',
-    dark: 'Sombrio',
-    steel: 'Aço',
-    fairy: 'Fada',
-  };
-
-  const generations = {
-    'generation-i': '1ª Geração',
-    'generation-ii': '2ª Geração',
-    'generation-iii': '3ª Geração',
-    'generation-iv': '4ª Geração',
-    'generation-v': '5ª Geração',
-    'generation-vi': '6ª Geração',
-    'generation-vii': '7ª Geração',
-    'generation-viii': '8ª Geração',
-    'generation-ix': '9ª Geração',
-  };
-
   const { data: pokemonData, request: requestPokemon } = useFetch();
   const { data: specieData, request: requestSpecie } = useFetch();
 

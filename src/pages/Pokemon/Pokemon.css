@@ -1,0 +1,235 @@
+.pokemon-page {
+  padding-top: 45px !important;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.pokemon-page-breadcrumb {
+  display: flex;
+  gap: var(--spacing-sm);
+  font: var(--primary-sm);
+  align-items: center;
+}
+
+.pokemon-page-breadcrumb img {
+  width: 12px;
+  height: 12px;
+}
+
+.pokemon-image {
+  background-color: var(--background-2);
+  place-items: center;
+  border-radius: var(--xl-border);
+  border: 1px solid var(--border);
+}
+
+.pokemon-name {
+  color: var(--text-primary);
+}
+
+.pokemon-name::first-letter {
+  text-transform: uppercase;
+}
+
+.pokemon-page-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: stretch;
+}
+
+.pokemon-evolution-chain {
+  padding: 25px;
+  background-color: var(--background-2);
+  border-radius: var(--xl-border);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.pokemon-evolution-chain h2 {
+  font: var(--primary-sm);
+  font-weight: 600;
+}
+
+.pokemon-evolution {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: 8px 12px 8px 12px;
+  border-radius: var(--md-border);
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  align-items: center;
+}
+
+.pokemon-evolution-image {
+  border-radius: var(--md-border);
+  background-color: var(--background-2);
+  width: 36px;
+  height: 36px;
+  padding: 2px;
+}
+
+.pokemon-evolution-chain-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.arrow-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.pokemon-evolution-chain-item:last-child .arrow-icon {
+  display: none;
+}
+
+.pokemon-evolution-chain-list {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.pokemon-evolution-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.pokemon-evolution-content h3 {
+  font: var(--primary-sm);
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.pokemon-evolution-content h3::first-letter {
+  text-transform: uppercase;
+}
+
+.pokemon-evolution-content span {
+  font: var(--primary-sm);
+  font-size: 0.65rem;
+}
+
+.pokemon-top {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.id {
+  color: var(--brand);
+}
+
+.generation {
+  padding: 4px 8px;
+  background-color: var(--background-2);
+  border-radius: var(--md-border);
+  font: var(--primary-sm);
+}
+
+.pokemon-page-content-right,
+.pokemon-page-content-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-width: 0;
+  height: 100%;
+}
+
+.pokemon-description {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.pokemon-description h1 {
+  font: var(--primary-xl);
+  font-size: 3rem;
+  color: var(--text-primary);
+}
+
+.pokemon-description h1::first-letter {
+  text-transform: uppercase;
+}
+
+.pokemon-types {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.pokemon-types span {
+  padding: 4px 12px;
+  border-radius: var(--lg-border);
+  font: var(--primary-sm);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hr);
+  margin: 1rem 0;
+}
+
+.pokemon-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.data span {
+  font: var(--primary-sm);
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.data span + span {
+  color: var(--text-primary);
+  font: var(--primary-md);
+  font-weight: 500;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pokemon-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.stat span {
+  font: var(--primary-sm);
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.stat-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--hr);
+  border-radius: var(--md-border);
+}
+
+.stat-filling {
+  height: 6px;
+  border-radius: var(--md-border);
+  transition: width 0.6s ease-out;
+}
