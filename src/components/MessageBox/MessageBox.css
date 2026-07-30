@@ -1,0 +1,23 @@
+.message-box {
+  max-width: 520px;
+  margin: 4rem auto;
+  padding: var(--spacing-xl);
+  text-align: center;
+  background: var(--background-2);
+  border: 1px solid var(--border);
+  border-radius: var(--xl-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.message-box h2 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  font: var(--primary-lg);
+}
+
+.message-box p {
+  margin: 0;
+  color: var(--text-secondary);
+  font: var(--primary-sm);
+  line-height: 1.6;
+}

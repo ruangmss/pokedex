@@ -5,6 +5,7 @@ import Loading from '../Loading/Loading';
 import Error from '../Error/Error';
 import './PokemonsSection.css';
 import { TYPE_GET, POKEMON_LIST } from '../../api/api';
+import MessageBox from '../MessageBox/MessageBox';
 
 const PokemonsSection = ({ nameOrId, type }) => {
   const { error, loading, request } = useFetch();
@@ -83,12 +84,10 @@ const PokemonsSection = ({ nameOrId, type }) => {
 
   if (pokemonsList.length === 0) {
     return (
-      <div className="container">
-        <div className="empty-state">
-          <h2>Nenhum Pokémon encontrado</h2>
-          <p>Tente alterar o nome ou tipo para realizar uma nova busca.</p>
-        </div>
-      </div>
+      <MessageBox
+        title="Nenhum Pokémon encontrado"
+        message="Tente alterar o nome ou o tipo para realizar uma nova busca."
+      />
     );
   }
 
