@@ -1,0 +1,66 @@
+.pokemon-card-skeleton {
+  pointer-events: none;
+}
+
+.pokemon-card-skeleton-image,
+.pokemon-card-skeleton-id,
+.pokemon-card-skeleton-generation,
+.pokemon-card-skeleton-title,
+.pokemon-card-skeleton-type {
+  background: linear-gradient(90deg, #ececec 25%, #f5f5f5 50%, #ececec 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s linear infinite;
+}
+
+.pokemon-card-skeleton-image {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--xl-border);
+}
+
+.pokemon-card-skeleton-data {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-md);
+}
+
+.pokemon-card-skeleton-id {
+  width: 50px;
+  height: 16px;
+  border-radius: 999px;
+}
+
+.pokemon-card-skeleton-generation {
+  width: 90px;
+  height: 16px;
+  border-radius: 999px;
+}
+
+.pokemon-card-skeleton-title {
+  width: 60%;
+  height: 28px;
+  margin-top: var(--spacing-md);
+  border-radius: 6px;
+}
+
+.pokemon-card-skeleton-types {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.pokemon-card-skeleton-type {
+  width: 70px;
+  height: 28px;
+  border-radius: 999px;
+}
+
+@keyframes skeleton-loading {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}

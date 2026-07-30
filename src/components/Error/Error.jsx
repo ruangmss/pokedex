@@ -1,8 +1,14 @@
-import React from 'react';
 import './Error.css';
 
 const Error = ({ error }) => {
-  return <div>Ocorreu um erro: {error}</div>;
+  return (
+    <div className="error-container">
+      <div className="error-box">
+        <h2>Ops! Algo deu errado.</h2>
+        <p>{error}</p>
+      </div>
+    </div>
+  );
 };
 
 export default Error;

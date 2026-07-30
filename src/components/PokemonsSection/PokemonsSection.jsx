@@ -84,7 +84,10 @@ const PokemonsSection = ({ nameOrId, type }) => {
   if (pokemonsList.length === 0) {
     return (
       <div className="container">
-        <p>Nenhum Pokémon encontrado para os filtros inseridos.</p>
+        <div className="empty-state">
+          <h2>Nenhum Pokémon encontrado</h2>
+          <p>Tente alterar o nome ou tipo para realizar uma nova busca.</p>
+        </div>
       </div>
     );
   }
