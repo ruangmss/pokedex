@@ -1,10 +1,12 @@
 import React from 'react';
 import useFetch from '../../hooks/useFetch';
 import './Pokemon.css';
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { POKEMON_GET, POKEMON_SPECIES_GET } from '../../api/api';
 import fallback from '../../assets/images/fallback-image.webp';
 import arrow from '../../assets/icons/arrow.svg';
+import PokemonEvolutionChain from './PokemonEvolutionChain/PokemonEvolutionChain';
+import PokemonStats from './PokemonStats/PokemonStats';
 
 const pokemonTypes = {
   normal: 'Normal',
@@ -51,22 +53,11 @@ const habitats = {
   'rough-terrain': 'Terreno acidentado',
 };
 
-const stats = {
-  hp: 'HP',
-  attack: 'Ataque',
-  defense: 'Defesa',
-  'special-attack': 'Ataque Especial',
-  'special-defense': 'Defesa Especial',
-  speed: 'Velocidade',
-};
-
 const Pokemon = () => {
   const { name } = useParams();
   const { data: pokemonData, request: requestPokemon } = useFetch();
   const { data: specieData, request: requestSpecie } = useFetch();
   const { data: evolutionChainData, request: requestEvolutionChain } = useFetch();
-
-  const [statsAnimation, setStatsAnimation] = React.useState(false);
 
   React.useEffect(() => {
     async function fetchPokemon() {
@@ -98,35 +89,9 @@ const Pokemon = () => {
     fetchEvolutionChain();
   }, [specieData, requestEvolutionChain]);
 
-  React.useEffect(() => {
-    setStatsAnimation(false);
-
-    const timeout = setTimeout(() => {
-      setStatsAnimation(true);
-    }, 50);
-
-    return () => clearTimeout(timeout);
-  }, [name]);
-
   if (!pokemonData) {
     return null;
   }
-
-  function getAllEvolutions(chain, evolutions = []) {
-    if (!chain) {
-      return evolutions;
-    }
-
-    evolutions.push(chain.species);
-
-    chain.evolves_to.forEach((evolution) => {
-      getAllEvolutions(evolution, evolutions);
-    });
-
-    return evolutions;
-  }
-
-  const evolutions = evolutionChainData ? getAllEvolutions(evolutionChainData.chain) : [];
 
   const image =
     pokemonData.sprites?.other?.['official-artwork']?.front_default ||
@@ -161,35 +126,7 @@ const Pokemon = () => {
             <img src={image} alt={`Imagem do Pokémon ${pokemonData.name}`} />
           </div>
 
-          <div className="pokemon-evolution-chain">
-            <h2>CADEIA EVOLUTIVA</h2>
-
-            <div className="pokemon-evolution-chain-list">
-              {evolutions.map((pokemon) => {
-                const id = pokemon.url.split('/').at(-2); // Pega o id com base em seu posicionamento na URL
-                const image =
-                  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png` ||
-                  fallback;
-
-                return (
-                  <NavLink to={`/pokemon/${pokemon.name}`} key={pokemon.name} className="pokemon-evolution-chain-item">
-                    <div className="pokemon-evolution">
-                      <div className="pokemon-evolution-image">
-                        <img src={image} alt={`Imagem do Pokémon ${pokemonData.name}`} />
-                      </div>
-
-                      <div className="pokemon-evolution-content">
-                        <h3>{pokemon.name}</h3>
-                        <span>#{id}</span>
-                      </div>
-                    </div>
-
-                    <img src={arrow} alt="Ícone de seta" className="arrow-icon" />
-                  </NavLink>
-                );
-              })}
-            </div>
-          </div>
+          <PokemonEvolutionChain evolutionChainData={evolutionChainData} />
         </div>
 
         <div className="pokemon-page-content-right">
@@ -253,26 +190,7 @@ const Pokemon = () => {
 
           <hr />
 
-          <div className="pokemon-stats">
-            <h3>ESTATÍSTICAS BASE</h3>
-
-            <div className="stats">
-              {pokemonData.stats.map((item) => (
-                <div className="stat" key={item.stat.name}>
-                  <span>{stats[item.stat.name]}</span>
-                  <div className="stat-track">
-                    <div
-                      className="stat-filling"
-                      style={{
-                        width: statsAnimation ? `${Math.min(item.base_stat, 100)}%` : '0%',
-                        backgroundColor: `var(--stat-${item.stat.name})`,
-                      }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <PokemonStats pokemonStats={pokemonData.stats} pokemonName={name} />
         </div>
       </div>
     </article>
