@@ -7,6 +7,7 @@ import fallback from '../../assets/images/fallback-image.webp';
 import arrow from '../../assets/icons/arrow.svg';
 import PokemonEvolutionChain from './PokemonEvolutionChain/PokemonEvolutionChain';
 import PokemonStats from './PokemonStats/PokemonStats';
+import NotFound from '../NotFound/NotFound';
 
 const pokemonTypes = {
   normal: 'Normal',
@@ -60,11 +61,17 @@ const Pokemon = () => {
   const { data: evolutionChainData, request: requestEvolutionChain } = useFetch();
 
   const [shiny, setShiny] = React.useState(false);
+  const [notFound, setNotFound] = React.useState(false);
 
   React.useEffect(() => {
     async function fetchPokemon() {
+      setNotFound(false);
+      setShiny(false);
+
       const { url, options } = POKEMON_GET(name);
-      await requestPokemon(url, options);
+      const { response } = await requestPokemon(url, options);
+
+      setNotFound(response?.status === 404);
     }
 
     fetchPokemon();
@@ -72,17 +79,21 @@ const Pokemon = () => {
 
   React.useEffect(() => {
     async function fetchSpecie() {
+      if (!pokemonData?.species?.name) {
+        return;
+      }
+
       const { url, options } = POKEMON_SPECIES_GET(name);
       await requestSpecie(url, options);
     }
 
     fetchSpecie();
-  }, [name, requestSpecie]);
+  }, [pokemonData, requestSpecie]);
 
   React.useEffect(() => {
     async function fetchEvolutionChain() {
-      if (!specieData) {
-        return null;
+      if (!specieData?.evolution_chain?.url) {
+        return;
       }
 
       await requestEvolutionChain(specieData.evolution_chain.url);
@@ -90,6 +101,15 @@ const Pokemon = () => {
 
     fetchEvolutionChain();
   }, [specieData, requestEvolutionChain]);
+
+  if (notFound) {
+    return (
+      <NotFound
+        description="Pokémon não encontrado"
+        message={`O Pokémon "${name.charAt(0).toUpperCase() + name.slice(1)}" não foi encontrado na listagem. Verifique o parâmetro e tente novamente.`}
+      />
+    );
+  }
 
   if (!pokemonData) {
     return null;

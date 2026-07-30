@@ -11,7 +11,15 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="pokemon/:name" element={<Pokemon />} />
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="*"
+          element={
+            <NotFound
+              description="Página não encontrada"
+              message="A página que você está procurando não existe ou foi movida para outro endereço."
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
