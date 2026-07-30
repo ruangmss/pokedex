@@ -24,10 +24,25 @@
   border-radius: var(--xl-border);
   border: 1px solid var(--border);
   flex: 1;
+  position: relative;
 }
 
 .pokemon-image img {
   margin: 0 auto;
+}
+
+.shiny-button {
+  padding: 8px 12px;
+  font-weight: 500;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    scale 0.2s ease;
+  border-radius: var(--md-border);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 1px solid var(--border);
 }
 
 .pokemon-name {
@@ -137,5 +152,11 @@ hr {
 
   .pokemon-page-content-right {
     order: -1;
+  }
+}
+
+@media (hover: hover) {
+  .shiny-button:hover {
+    scale: 1.04;
   }
 }

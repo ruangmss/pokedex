@@ -59,6 +59,8 @@ const Pokemon = () => {
   const { data: specieData, request: requestSpecie } = useFetch();
   const { data: evolutionChainData, request: requestEvolutionChain } = useFetch();
 
+  const [shiny, setShiny] = React.useState(false);
+
   React.useEffect(() => {
     async function fetchPokemon() {
       const { url, options } = POKEMON_GET(name);
@@ -93,11 +95,13 @@ const Pokemon = () => {
     return null;
   }
 
-  const image =
-    pokemonData.sprites?.other?.['official-artwork']?.front_default ||
-    pokemonData.sprites?.other?.home?.front_default ||
-    pokemonData.sprites?.front_default ||
-    fallback;
+  const image = shiny
+    ? pokemonData.sprites?.other?.['official-artwork']?.front_shiny ||
+      pokemonData.sprites?.other?.home?.front_shiny ||
+      pokemonData.sprites?.front_shiny
+    : pokemonData.sprites?.other?.['official-artwork']?.front_default ||
+      pokemonData.sprites?.other?.home?.front_default ||
+      pokemonData.sprites?.front_default;
 
   let description = specieData?.flavor_text_entries?.find((entry) => entry.language.name === 'pt')?.flavor_text;
 
@@ -111,6 +115,10 @@ const Pokemon = () => {
 
   const habitat = habitats[specieData?.habitat?.name];
 
+  function turnIntoShiny() {
+    setShiny((shiny) => !shiny);
+  }
+
   return (
     <article className="container pokemon-page">
       <div className="pokemon-page-breadcrumb">
@@ -123,10 +131,26 @@ const Pokemon = () => {
       <div className="pokemon-page-content">
         <div className="pokemon-page-content-left">
           <div className="pokemon-image">
-            <img src={image} alt={`Imagem do Pokémon ${pokemonData.name}`} />
+            <button
+              className="shiny-button"
+              onClick={turnIntoShiny}
+              style={{
+                backgroundColor: `${shiny ? 'var(--brand)' : 'var(--white)'}`,
+                color: shiny ? 'var(--white)' : 'var(--text-primary)',
+              }}
+            >
+              {shiny ? 'Shiny' : 'Normal'}
+            </button>
+            <img
+              src={image}
+              alt={`Imagem do Pokémon ${pokemonData.name}`}
+              onError={({ currentTarget }) => {
+                currentTarget.src = fallback;
+              }}
+            />
           </div>
 
-          <PokemonEvolutionChain evolutionChainData={evolutionChainData} />
+          <PokemonEvolutionChain evolutionChainData={evolutionChainData} shiny={shiny} />
         </div>
 
         <div className="pokemon-page-content-right">
