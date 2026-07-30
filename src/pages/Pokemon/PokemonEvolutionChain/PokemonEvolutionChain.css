@@ -1,0 +1,81 @@
+.pokemon-evolution-chain {
+  padding: 25px;
+  background-color: var(--background-2);
+  border-radius: var(--xl-border);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.pokemon-evolution-chain h2 {
+  font: var(--primary-sm);
+  font-weight: 600;
+}
+
+.pokemon-evolution {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: 8px 12px 8px 12px;
+  border-radius: var(--md-border);
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  align-items: center;
+  transition:
+    border 0.2s ease,
+    transform 0.2s ease;
+}
+
+.pokemon-evolution.active {
+  border: 1px solid var(--brand);
+}
+
+.pokemon-evolution-image {
+  border-radius: var(--md-border);
+  background-color: var(--background-2);
+  width: 36px;
+  height: 36px;
+  padding: 2px;
+}
+
+.arrow-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.pokemon-evolution-chain-item:last-child .arrow-icon {
+  display: none;
+}
+
+.pokemon-evolution-chain-list {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.pokemon-evolution-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.pokemon-evolution-content h3 {
+  font: var(--primary-sm);
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.pokemon-evolution-content h3::first-letter {
+  text-transform: uppercase;
+}
+
+.pokemon-evolution-content span {
+  font: var(--primary-sm);
+  font-size: 0.65rem;
+}
+
+@media (hover: hover) {
+  .pokemon-evolution:hover {
+    transform: translateY(-3px);
+  }
+}
