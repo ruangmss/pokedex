@@ -7,11 +7,16 @@ import './PokemonsSection.css';
 import { TYPE_GET, POKEMON_LIST } from '../../api/api';
 import MessageBox from '../MessageBox/MessageBox';
 
-const PokemonsSection = ({ nameOrId, type, offset, setTotalPages }) => {
+const PokemonsSection = ({ nameOrId, type, offset, setTotalPages, setPage, setOffset }) => {
   const { error, loading, request } = useFetch();
 
   const [pokemonsList, setPokemonsList] = React.useState([]);
   const [allPokemons, setAllPokemons] = React.useState([]);
+
+  React.useEffect(() => {
+    setPage(1);
+    setOffset(0);
+  }, [nameOrId, type]);
 
   React.useEffect(() => {
     async function fetchAllPokemons() {

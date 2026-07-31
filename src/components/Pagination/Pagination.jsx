@@ -33,8 +33,8 @@ const Pagination = ({ setOffset, page, setPage, totalPages }) => {
       </div>
     );
   }
-};
 
-return null;
+  return null;
+};
 
 export default Pagination;

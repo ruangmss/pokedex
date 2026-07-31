@@ -28,6 +28,8 @@ const Home = () => {
         generation={generation}
         offset={offset}
         setTotalPages={setTotalPages}
+        setPage={setPage}
+        setOffset={setOffset}
       />
 
       <Pagination setOffset={setOffset} setPage={setPage} page={page} totalPages={totalPages} />
