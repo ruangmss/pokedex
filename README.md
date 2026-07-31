@@ -1,16 +1,115 @@
-# React + Vite
+# 📖 Pokédex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação web desenvolvida em **React** que funciona como um catálogo completo de Pokémon, permitindo pesquisar por nome ou número, filtrar por tipo e visualizar informações detalhadas de cada criatura através da **PokéAPI**.
 
-Currently, two official plugins are available:
+> **Nota:** Este projeto foi desenvolvido com o objetivo de aprofundar conhecimentos em **React**, consumo de APIs REST, componentização, gerenciamento de estado e roteamento. Não possui vínculo oficial com a franquia Pokémon.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+# 🚀 Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🔎 Busca de Pokémon por nome ou número.
+- 🏷️ Filtro por tipo.
+- 📄 Página individual com informações detalhadas.
+- 📊 Exibição das estatísticas base.
+- ✨ Alternância entre sprite normal e _Shiny_.
+- 🌱 Navegação pela cadeia evolutiva.
+- 📍 Paginação sincronizada com a URL.
+- 🔗 Compartilhamento da página atual preservando paginação e filtros.
+- ↩️ Retorno inteligente à Pokédex mantendo o contexto da navegação.
+- 🖼️ Skeleton Loading durante o carregamento dos dados.
+- ⚠️ Tratamento de erros e páginas não encontradas.
+- 📱 Interface responsiva.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# 🛠️ Tecnologias Utilizadas
+
+- React
+- React Router DOM
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+- Vite
+- PokéAPI
+
+---
+
+# 📂 Estrutura do Projeto
+
+```text
+src/
+├── api/
+├── assets/
+├── components/
+├── helpers/
+├── hooks/
+├── pages/
+├── App.jsx
+└── main.jsx
+```
+
+O projeto foi organizado utilizando uma arquitetura baseada em componentes reutilizáveis, separando responsabilidades entre páginas, componentes, hooks personalizados e serviços responsáveis pela comunicação com a API.
+
+---
+
+# 🌐 API Utilizada
+
+Todos os dados apresentados na aplicação são obtidos através da **PokéAPI**.
+
+https://pokeapi.co/
+
+Entre as informações consumidas estão:
+
+- Pokémon
+- Tipos
+- Espécies
+- Cadeias evolutivas
+- Estatísticas
+- Habilidades
+- Geração do Pokémon
+
+---
+
+# 📚 Conceitos Aplicados
+
+Durante o desenvolvimento foram utilizados diversos conceitos importantes do ecossistema React, entre eles:
+
+- Componentização
+- Hooks (`useState`, `useEffect`, `useCallback` e `useRef`)
+- Hooks personalizados
+- React Router
+- Navegação entre páginas
+- Manipulação de parâmetros da URL (`useSearchParams`)
+- Navegação programática (`useNavigate`)
+- Consumo de APIs REST
+- Renderização condicional
+- Debounce em pesquisas
+- Skeleton Loading
+- Paginação
+- Compartilhamento de estado através da URL
+- Tratamento de erros
+- Organização e reutilização de componentes
+
+---
+
+# 🎨 Design
+
+A interface foi desenvolvida buscando proporcionar uma experiência limpa, moderna e intuitiva.
+
+O projeto utiliza:
+
+- Sistema de cores baseado nos tipos dos Pokémon;
+- Componentes reutilizáveis;
+- Layout responsivo;
+- Transições suaves;
+- Feedback visual durante carregamentos;
+- Navegação fluida entre páginas.
+
+---
+
+# 👤 Desenvolvedor
+
+Projeto desenvolvido por **Ruan Gomes** como parte da evolução prática nos estudos de React.
+
+> _"Cada projeto representa um novo passo na construção de aplicações mais organizadas, performáticas e intuitivas."_
