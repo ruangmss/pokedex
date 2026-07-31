@@ -10,6 +10,7 @@ import PokemonStats from './PokemonStats/PokemonStats';
 import NotFound from '../NotFound/NotFound';
 import PokemonSkeleton from './PokemonSkeleton/PokemonSkeleton';
 import Error from '../../components/Error/Error';
+import useHead from '../../hooks/useHead';
 
 const pokemonTypes = {
   normal: 'Normal',
@@ -107,6 +108,13 @@ const Pokemon = () => {
 
     fetchEvolutionChain();
   }, [specieData, requestEvolutionChain]);
+
+  useHead(
+    `Pokédex | ${pokemonData?.name?.charAt(0).toUpperCase() + pokemonData?.name?.slice(1)}`,
+    `Conheça as informações sobre ${
+      pokemonData?.name?.charAt(0).toUpperCase() + pokemonData?.name?.slice(1)
+    }: tipos, estatísticas, habilidades, evolução, habitat, geração e mais.`,
+  );
 
   if (pokemonLoading) {
     return <PokemonSkeleton />;

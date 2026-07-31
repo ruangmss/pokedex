@@ -2,9 +2,15 @@ import React from 'react';
 import Hero from '../components/Hero/Hero';
 import PokemonsSection from '../components/PokemonsSection/PokemonsSection';
 import Pagination from '../components/Pagination/Pagination';
+import useHead from '../hooks/useHead';
 import { useSearchParams } from 'react-router-dom';
 
 const Home = () => {
+  useHead(
+    'Pokédex',
+    'Explore centenas de Pokémon, pesquise por nome ou número, filtre por tipo e visualize estatísticas, habilidades, evoluções e outras informações obtidas diretamente da PokéAPI.',
+  );
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const initialPage = Math.max(Number(searchParams.get('page')) || 1, 1);
