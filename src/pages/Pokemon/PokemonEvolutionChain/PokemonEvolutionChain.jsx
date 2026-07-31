@@ -27,7 +27,7 @@ const PokemonEvolutionChain = ({ evolutionChainData, shiny }) => {
 
         <div className="pokemon-evolution-chain-list">
           {evolutions.map((pokemon) => {
-            const id = pokemon.url.split('/').at(-2);
+            const id = pokemon.url.split('/').filter(Boolean).pop();
             const image = shiny
               ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${id}.png`
               : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;

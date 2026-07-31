@@ -12,22 +12,6 @@ const PokemonsSection = ({ nameOrId, type, offset, setTotalPages }) => {
 
   const [pokemonsList, setPokemonsList] = React.useState([]);
   const [allPokemons, setAllPokemons] = React.useState([]);
-  const [debouncedNameOrId, setDebouncedNameOrId] = React.useState(nameOrId);
-
-  React.useEffect(() => {
-    if (!nameOrId.trim()) {
-      setDebouncedNameOrId('');
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setDebouncedNameOrId(nameOrId);
-    }, 500);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [nameOrId]);
 
   React.useEffect(() => {
     async function fetchAllPokemons() {
@@ -48,7 +32,7 @@ const PokemonsSection = ({ nameOrId, type, offset, setTotalPages }) => {
 
   React.useEffect(() => {
     async function fetchPokemons() {
-      const search = debouncedNameOrId.trim().toLowerCase();
+      const search = nameOrId.trim().toLowerCase();
 
       let baseList = allPokemons;
 
@@ -79,7 +63,7 @@ const PokemonsSection = ({ nameOrId, type, offset, setTotalPages }) => {
     }
 
     fetchPokemons();
-  }, [allPokemons, debouncedNameOrId, type, request, offset, setTotalPages]);
+  }, [allPokemons, nameOrId, type, request, offset, setTotalPages]);
 
   if (loading) {
     return <Loading />;
