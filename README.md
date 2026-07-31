@@ -35,24 +35,6 @@ Uma aplicação web desenvolvida em **React** que funciona como um catálogo com
 
 ---
 
-# 📂 Estrutura do Projeto
-
-```text
-src/
-├── api/
-├── assets/
-├── components/
-├── helpers/
-├── hooks/
-├── pages/
-├── App.jsx
-└── main.jsx
-```
-
-O projeto foi organizado utilizando uma arquitetura baseada em componentes reutilizáveis, separando responsabilidades entre páginas, componentes, hooks personalizados e serviços responsáveis pela comunicação com a API.
-
----
-
 # 🌐 API Utilizada
 
 Todos os dados apresentados na aplicação são obtidos através da **PokéAPI**.
