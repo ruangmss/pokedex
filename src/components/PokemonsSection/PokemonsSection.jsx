@@ -77,7 +77,7 @@ const PokemonsSection = ({ nameOrId, type, offset, setTotalPages }) => {
     return (
       <MessageBox
         title="Nenhum Pokémon encontrado"
-        message="Tente alterar o nome ou o tipo para realizar uma nova busca."
+        message="Altere o nome/id ou o tipo para realizar uma nova busca."
       />
     );
   }

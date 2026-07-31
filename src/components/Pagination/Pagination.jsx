@@ -14,23 +14,27 @@ const Pagination = ({ setOffset, page, setPage, totalPages }) => {
     }
   }
 
-  return (
-    <div className="container pagination">
-      <hr />
+  if (totalPages !== 0) {
+    return (
+      <div className="container pagination">
+        <hr />
 
-      <div className="pagination-content">
-        <button onClick={changePage} disabled={page === 1}>
-          Anterior
-        </button>
+        <div className="pagination-content">
+          <button onClick={changePage} disabled={page === 1}>
+            Anterior
+          </button>
 
-        {page && <span>{`Página ${page} de ${totalPages}`}</span>}
+          {page && <span>{`Página ${page} de ${totalPages}`}</span>}
 
-        <button onClick={changePage} disabled={page === totalPages}>
-          Próxima
-        </button>
+          <button onClick={changePage} disabled={page === totalPages}>
+            Próxima
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
+
+return null;
 
 export default Pagination;
