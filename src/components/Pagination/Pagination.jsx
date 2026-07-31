@@ -12,7 +12,7 @@ const Pagination = ({ page, updatePage, totalPages }) => {
     }
   }
 
-  if (totalPages !== 0) {
+  if (totalPages !== 0 && totalPages && page < totalPages) {
     return (
       <div className="container pagination">
         <hr />

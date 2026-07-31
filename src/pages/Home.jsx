@@ -13,7 +13,7 @@ const Home = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const initialPage = Math.max(Number(searchParams.get('page')) || 1, 1);
+  const initialPage = Number(searchParams.get('page')) || 1;
   const initialType = searchParams.get('type') || '';
 
   const [nameOrId, setNameOrId] = React.useState('');
