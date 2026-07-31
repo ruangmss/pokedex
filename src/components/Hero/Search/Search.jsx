@@ -2,7 +2,7 @@ import React from 'react';
 import './Search.css';
 import useFetch from '../../../hooks/useFetch';
 
-const Search = ({ nameOrId, type, generation, setNameOrId, setType, setGeneration }) => {
+const Search = ({ nameOrId, type, generation, setNameOrId, updateType }) => {
   const types = [
     { value: 'normal', label: 'Normal' },
     { value: 'fire', label: 'Fogo' },
@@ -43,7 +43,7 @@ const Search = ({ nameOrId, type, generation, setNameOrId, setType, setGeneratio
 
       <label htmlFor="pokemon-type">
         Tipo
-        <select id="pokemon-type" value={type} onChange={setOnChange(setType)}>
+        <select id="pokemon-type" value={type} onChange={setOnChange(updateType)}>
           <option value="">Todos os tipos</option>
           {types.map(({ value, label }) => (
             <option key={value} value={value}>

@@ -66,7 +66,7 @@
   align-items: center;
 }
 
-.pokemon-page-breadcrumb a {
+.pokemon-page-breadcrumb button {
   transition: color 0.2s ease;
 }
 
@@ -164,7 +164,7 @@ hr {
     scale: 1.04;
   }
 
-  .pokemon-page-breadcrumb a:hover {
+  .pokemon-page-breadcrumb button:hover {
     color: var(--brand);
   }
 }

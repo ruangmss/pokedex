@@ -1,15 +1,13 @@
 import React from 'react';
 import './Pagination.css';
 
-const Pagination = ({ setOffset, page, setPage, totalPages }) => {
+const Pagination = ({ page, updatePage, totalPages }) => {
   function changePage({ target }) {
     if (target.innerText === 'Próxima') {
-      setOffset((offset) => (offset += 20));
-      setPage((page) => (page += 1));
+      updatePage(page + 1);
       window.scrollTo(0, 0);
     } else {
-      setOffset((offset) => (offset -= 20));
-      setPage((page) => (page -= 1));
+      updatePage(page - 1);
       window.scrollTo(0, 0);
     }
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import useFetch from '../../hooks/useFetch';
 import './Pokemon.css';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { POKEMON_GET, POKEMON_SPECIES_GET } from '../../api/api';
 import fallback from '../../assets/images/fallback-image.webp';
 import arrow from '../../assets/icons/arrow.svg';
@@ -65,6 +65,8 @@ const Pokemon = () => {
   const [shiny, setShiny] = React.useState(false);
   const [notFound, setNotFound] = React.useState(false);
 
+  const navigate = useNavigate();
+
   React.useEffect(() => {
     async function fetchPokemon() {
       setNotFound(false);
@@ -90,7 +92,7 @@ const Pokemon = () => {
     }
 
     fetchSpecie();
-  }, [pokemonData, requestSpecie]);
+  }, [name, pokemonData, requestSpecie]);
 
   React.useEffect(() => {
     async function fetchEvolutionChain() {
@@ -152,7 +154,9 @@ const Pokemon = () => {
   return (
     <article className="container pokemon-page">
       <div className="pokemon-page-breadcrumb">
-        <Link to="/">Pokédex</Link>
+        <button type="button" onClick={() => navigate(-1)}>
+          Pokédex
+        </button>
         <img src={arrow} alt="Ícone de seta" />
         {/* Isso se torna uma expressão JS, tornando o caractere uma string e viabilizando seu uso */}
         <span className="pokemon-name">{pokemonData.name}</span>
