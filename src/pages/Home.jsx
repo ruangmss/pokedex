@@ -18,7 +18,6 @@ const Home = () => {
 
   const [nameOrId, setNameOrId] = React.useState('');
   const [type, setType] = React.useState(initialType);
-  const [generation, setGeneration] = React.useState('');
   const [page, setPage] = React.useState(initialPage);
   const [offset, setOffset] = React.useState((initialPage - 1) * 20);
   const [totalPages, setTotalPages] = React.useState(null);
@@ -83,7 +82,6 @@ const Home = () => {
       <Hero
         nameOrId={nameOrId}
         type={type}
-        generation={generation}
         setNameOrId={updateNameOrId}
         updateType={updateType}
       />
@@ -91,7 +89,6 @@ const Home = () => {
       <PokemonsSection
         nameOrId={nameOrId}
         type={type}
-        generation={generation}
         offset={offset}
         setTotalPages={setTotalPages}
       />

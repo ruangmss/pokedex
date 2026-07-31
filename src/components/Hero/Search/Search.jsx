@@ -1,8 +1,7 @@
 import React from 'react';
 import './Search.css';
-import useFetch from '../../../hooks/useFetch';
 
-const Search = ({ nameOrId, type, generation, setNameOrId, updateType }) => {
+const Search = ({ nameOrId, type, setNameOrId, updateType }) => {
   const types = [
     { value: 'normal', label: 'Normal' },
     { value: 'fire', label: 'Fogo' },
