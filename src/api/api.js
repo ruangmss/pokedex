@@ -37,11 +37,3 @@ export function TYPE_GET(type) {
     normalize: (json) => json.pokemon.map(({ pokemon }) => pokemon),
   };
 }
-
-export function GENERATION_GET(generation) {
-  return {
-    url: `${BASE_URL}/generation/${generation}`,
-    options: {},
-    normalize: (json) => json.pokemon_species,
-  };
-}
