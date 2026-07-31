@@ -82,11 +82,7 @@ const PokemonCard = ({ pokemon }) => {
     fallback;
 
   return (
-    <Link
-      to={`/pokemon/${pokemonData.name}`}
-      state={{ from: `${location.pathname}${location.search}` }}
-      className="pokemon-card"
-    >
+    <Link to={`/pokemon/${pokemonData.name}`} state={{ from: `${pathname}${search}` }} className="pokemon-card">
       <div className="pokemon-card-image">
         <img src={image} alt={`Imagem do Pokémon ${pokemon.name}`} />
       </div>
