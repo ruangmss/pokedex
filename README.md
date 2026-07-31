@@ -58,7 +58,7 @@ Entre as informações consumidas estão:
 Durante o desenvolvimento foram utilizados diversos conceitos importantes do ecossistema React, entre eles:
 
 - Componentização
-- Hooks (`useState`, `useEffect`, `useCallback` e `useRef`)
+- Hooks (`useState`, `useEffect`, `useCallback`...)
 - Hooks personalizados
 - React Router
 - Navegação entre páginas
