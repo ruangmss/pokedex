@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: var(--spacing-md);
   font: var(--primary-sm);
+  padding-bottom: 45px !important;
 }
 
 .pagination-content {
