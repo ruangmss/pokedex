@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import fallback from '../../../assets/images/fallback-image.webp';
 import arrow from '../../../assets/icons/arrow.svg';
 import './PokemonEvolutionChain.css';
@@ -19,6 +19,7 @@ const PokemonEvolutionChain = ({ evolutionChainData, shiny }) => {
   }
 
   const evolutions = evolutionChainData ? getAllEvolutions(evolutionChainData.chain) : [];
+  const location = useLocation();
 
   if (evolutions.length > 1) {
     return (
@@ -33,7 +34,14 @@ const PokemonEvolutionChain = ({ evolutionChainData, shiny }) => {
               : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
             return (
-              <NavLink to={`/pokemon/${pokemon.name}`} key={pokemon.name} className="pokemon-evolution">
+              <NavLink
+                to={`/pokemon/${pokemon.name}`}
+                state={{
+                  from: location.state?.from || '/',
+                }}
+                key={pokemon.name}
+                className="pokemon-evolution"
+              >
                 <div className="pokemon-evolution-image">
                   <img
                     src={image}

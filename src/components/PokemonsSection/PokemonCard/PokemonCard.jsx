@@ -3,7 +3,7 @@ import './PokemonCard.css';
 import useFetch from '../../../hooks/useFetch';
 import PokemonCardSkeleton from './PokemonCardSkeleton/PokemonCardSkeleton';
 import { POKEMON_GET, POKEMON_SPECIES_GET } from '../../../api/api';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import fallback from '../../../assets/images/fallback-image.webp';
 
 const pokemonTypes = {
@@ -47,6 +47,7 @@ const PokemonCard = ({ pokemon }) => {
     error: pokemonDataError,
   } = useFetch();
   const { data: specieData, request: requestSpecie } = useFetch();
+  const { pathname, search } = useLocation();
 
   React.useEffect(() => {
     async function fetchPokemon() {
@@ -81,7 +82,11 @@ const PokemonCard = ({ pokemon }) => {
     fallback;
 
   return (
-    <Link to={`/pokemon/${pokemonData.name}`} className="pokemon-card">
+    <Link
+      to={`/pokemon/${pokemonData.name}`}
+      state={{ from: `${location.pathname}${location.search}` }}
+      className="pokemon-card"
+    >
       <div className="pokemon-card-image">
         <img src={image} alt={`Imagem do Pokémon ${pokemon.name}`} />
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import useFetch from '../../hooks/useFetch';
 import './Pokemon.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { POKEMON_GET, POKEMON_SPECIES_GET } from '../../api/api';
 import fallback from '../../assets/images/fallback-image.webp';
 import arrow from '../../assets/icons/arrow.svg';
@@ -66,6 +66,8 @@ const Pokemon = () => {
   const [notFound, setNotFound] = React.useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const pokedexUrl = location.state?.from || '/';
 
   React.useEffect(() => {
     async function fetchPokemon() {
@@ -154,7 +156,7 @@ const Pokemon = () => {
   return (
     <article className="container pokemon-page">
       <div className="pokemon-page-breadcrumb">
-        <button type="button" onClick={() => navigate(-1)}>
+        <button type="button" onClick={() => navigate(pokedexUrl)}>
           Pokédex
         </button>
         <img src={arrow} alt="Ícone de seta" />
