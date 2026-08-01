@@ -1,74 +1,81 @@
-import React from 'react';
-import useFetch from '../../hooks/useFetch';
-import './Pokemon.css';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import { POKEMON_GET, POKEMON_SPECIES_GET } from '../../api/api';
-import fallback from '../../assets/images/fallback-image.webp';
-import arrow from '../../assets/icons/arrow.svg';
-import PokemonEvolutionChain from './PokemonEvolutionChain/PokemonEvolutionChain';
-import PokemonStats from './PokemonStats/PokemonStats';
-import NotFound from '../NotFound/NotFound';
-import PokemonSkeleton from './PokemonSkeleton/PokemonSkeleton';
-import Error from '../../components/Error/Error';
-import useHead from '../../hooks/useHead';
+import React from "react";
+import useFetch from "../../hooks/useFetch";
+import "./Pokemon.css";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { POKEMON_GET, POKEMON_SPECIES_GET } from "../../api/api";
+import fallback from "../../assets/images/fallback-image.webp";
+import arrow from "../../assets/icons/arrow.svg";
+import PokemonEvolutionChain from "./PokemonEvolutionChain/PokemonEvolutionChain";
+import PokemonStats from "./PokemonStats/PokemonStats";
+import NotFound from "../NotFound/NotFound";
+import PokemonSkeleton from "./PokemonSkeleton/PokemonSkeleton";
+import Error from "../../components/Error/Error";
+import useHead from "../../hooks/useHead";
 
 const pokemonTypes = {
-  normal: 'Normal',
-  fire: 'Fogo',
-  water: 'Água',
-  electric: 'Elétrico',
-  grass: 'Grama',
-  ice: 'Gelo',
-  fighting: 'Lutador',
-  poison: 'Veneno',
-  ground: 'Terra',
-  flying: 'Voador',
-  psychic: 'Psíquico',
-  bug: 'Inseto',
-  rock: 'Pedra',
-  ghost: 'Fantasma',
-  dragon: 'Dragão',
-  dark: 'Sombrio',
-  steel: 'Aço',
-  fairy: 'Fada',
+  normal: "Normal",
+  fire: "Fogo",
+  water: "Água",
+  electric: "Elétrico",
+  grass: "Grama",
+  ice: "Gelo",
+  fighting: "Lutador",
+  poison: "Veneno",
+  ground: "Terra",
+  flying: "Voador",
+  psychic: "Psíquico",
+  bug: "Inseto",
+  rock: "Pedra",
+  ghost: "Fantasma",
+  dragon: "Dragão",
+  dark: "Sombrio",
+  steel: "Aço",
+  fairy: "Fada",
 };
 
 const generations = {
-  'generation-i': '1ª Geração',
-  'generation-ii': '2ª Geração',
-  'generation-iii': '3ª Geração',
-  'generation-iv': '4ª Geração',
-  'generation-v': '5ª Geração',
-  'generation-vi': '6ª Geração',
-  'generation-vii': '7ª Geração',
-  'generation-viii': '8ª Geração',
-  'generation-ix': '9ª Geração',
+  "generation-i": "1ª Geração",
+  "generation-ii": "2ª Geração",
+  "generation-iii": "3ª Geração",
+  "generation-iv": "4ª Geração",
+  "generation-v": "5ª Geração",
+  "generation-vi": "6ª Geração",
+  "generation-vii": "7ª Geração",
+  "generation-viii": "8ª Geração",
+  "generation-ix": "9ª Geração",
 };
 
 const habitats = {
-  cave: 'Caverna',
-  forest: 'Floresta',
-  grassland: 'Campo',
-  mountain: 'Montanha',
-  rare: 'Raro',
-  sea: 'Mar',
-  urban: 'Urbano',
-  'waters-edge': 'Beira da água',
-  'rough-terrain': 'Terreno acidentado',
+  cave: "Caverna",
+  forest: "Floresta",
+  grassland: "Campo",
+  mountain: "Montanha",
+  rare: "Raro",
+  sea: "Mar",
+  urban: "Urbano",
+  "waters-edge": "Beira da água",
+  "rough-terrain": "Terreno acidentado",
 };
 
 const Pokemon = () => {
   const { name } = useParams();
-  const { data: pokemonData, request: requestPokemon, error: pokemonError, loading: pokemonLoading } = useFetch();
+  const {
+    data: pokemonData,
+    request: requestPokemon,
+    error: pokemonError,
+    loading: pokemonLoading,
+  } = useFetch();
   const { data: specieData, request: requestSpecie } = useFetch();
-  const { data: evolutionChainData, request: requestEvolutionChain } = useFetch();
+  const { data: evolutionChainData, request: requestEvolutionChain } =
+    useFetch();
 
   const [shiny, setShiny] = React.useState(false);
   const [notFound, setNotFound] = React.useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
-  const pokedexUrl = location.state?.from || '/';
+  const pokedexUrl = location.state?.from || "/";
+  const width = window.innerWidth;
 
   React.useEffect(() => {
     async function fetchPokemon() {
@@ -138,26 +145,34 @@ const Pokemon = () => {
   }
 
   const image = shiny
-    ? pokemonData.sprites?.other?.['official-artwork']?.front_shiny ||
+    ? pokemonData.sprites?.other?.["official-artwork"]?.front_shiny ||
       pokemonData.sprites?.other?.home?.front_shiny ||
       pokemonData.sprites?.front_shiny
-    : pokemonData.sprites?.other?.['official-artwork']?.front_default ||
+    : pokemonData.sprites?.other?.["official-artwork"]?.front_default ||
       pokemonData.sprites?.other?.home?.front_default ||
       pokemonData.sprites?.front_default;
 
-  let description = specieData?.flavor_text_entries?.find((entry) => entry.language.name === 'pt')?.flavor_text;
+  let description = specieData?.flavor_text_entries?.find(
+    (entry) => entry.language.name === "pt",
+  )?.flavor_text;
 
   if (!description) {
-    description = specieData?.flavor_text_entries?.find((entry) => entry.language.name === 'en')?.flavor_text;
+    description = specieData?.flavor_text_entries?.find(
+      (entry) => entry.language.name === "en",
+    )?.flavor_text;
   }
 
   if (description) {
-    description = description.replace(/[\n\f]/g, ' ');
+    description = description.replace(/[\n\f]/g, " ");
   }
 
   const habitat = habitats[specieData?.habitat?.name];
 
   function turnIntoShiny() {
+    if (width <= 992) {
+      window.scrollTo(0, 0);
+    }
+
     setShiny((shiny) => !shiny);
   }
 
@@ -179,11 +194,11 @@ const Pokemon = () => {
               className="shiny-button"
               onClick={turnIntoShiny}
               style={{
-                backgroundColor: `${shiny ? 'var(--brand)' : 'var(--white)'}`,
-                color: shiny ? 'var(--white)' : 'var(--text-primary)',
+                backgroundColor: `${shiny ? "var(--brand)" : "var(--white)"}`,
+                color: shiny ? "var(--white)" : "var(--text-primary)",
               }}
             >
-              {shiny ? 'Shiny' : 'Normal'}
+              {shiny ? "Shiny" : "Normal"}
             </button>
             <img
               src={image}
@@ -194,14 +209,19 @@ const Pokemon = () => {
             />
           </div>
 
-          <PokemonEvolutionChain evolutionChainData={evolutionChainData} shiny={shiny} />
+          <PokemonEvolutionChain
+            evolutionChainData={evolutionChainData}
+            shiny={shiny}
+          />
         </div>
 
         <div className="pokemon-page-content-right">
           <div className="pokemon-top">
             <span className="id">#{pokemonData.id}</span>
             {specieData?.generation?.name && (
-              <span className="generation">{generations[specieData.generation.name]}</span>
+              <span className="generation">
+                {generations[specieData.generation.name]}
+              </span>
             )}
           </div>
 
@@ -250,8 +270,12 @@ const Pokemon = () => {
               <span>HABILIDADES</span>
               <span>
                 {pokemonData.abilities
-                  .map((item) => item.ability.name.charAt(0).toUpperCase() + item.ability.name.slice(1))
-                  .join(' | ')}
+                  .map(
+                    (item) =>
+                      item.ability.name.charAt(0).toUpperCase() +
+                      item.ability.name.slice(1),
+                  )
+                  .join(" | ")}
               </span>
             </div>
           </div>
