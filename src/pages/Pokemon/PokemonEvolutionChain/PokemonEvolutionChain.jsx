@@ -1,7 +1,7 @@
-import { NavLink, useLocation } from 'react-router-dom';
-import fallback from '../../../assets/images/fallback-image.webp';
-import arrow from '../../../assets/icons/arrow.svg';
-import './PokemonEvolutionChain.css';
+import { NavLink, useLocation } from "react-router-dom";
+import fallback from "../../../assets/images/fallback-image.webp";
+import arrow from "../../../assets/icons/arrow.svg";
+import "./PokemonEvolutionChain.css";
 
 const PokemonEvolutionChain = ({ evolutionChainData, shiny }) => {
   function getAllEvolutions(chain, evolutions = []) {
@@ -18,7 +18,9 @@ const PokemonEvolutionChain = ({ evolutionChainData, shiny }) => {
     return evolutions;
   }
 
-  const evolutions = evolutionChainData ? getAllEvolutions(evolutionChainData.chain) : [];
+  const evolutions = evolutionChainData
+    ? getAllEvolutions(evolutionChainData.chain)
+    : [];
   const location = useLocation();
 
   if (evolutions.length > 1) {
@@ -28,7 +30,7 @@ const PokemonEvolutionChain = ({ evolutionChainData, shiny }) => {
 
         <div className="pokemon-evolution-chain-list">
           {evolutions.map((pokemon) => {
-            const id = pokemon.url.split('/').filter(Boolean).pop();
+            const id = pokemon.url.split("/").filter(Boolean).pop();
             const image = shiny
               ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${id}.png`
               : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
@@ -37,10 +39,15 @@ const PokemonEvolutionChain = ({ evolutionChainData, shiny }) => {
               <NavLink
                 to={`/pokemon/${pokemon.name}`}
                 state={{
-                  from: location.state?.from || '/',
+                  from: location.state?.from || "/",
                 }}
                 key={pokemon.name}
                 className="pokemon-evolution"
+                onClick={() => {
+                  if (window.innerWidth <= 992) {
+                    window.scrollTo(0, 0);
+                  }
+                }}
               >
                 <div className="pokemon-evolution-image">
                   <img
