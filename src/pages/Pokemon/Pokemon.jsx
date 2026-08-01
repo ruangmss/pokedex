@@ -169,10 +169,6 @@ const Pokemon = () => {
   const habitat = habitats[specieData?.habitat?.name];
 
   function turnIntoShiny() {
-    if (width <= 992) {
-      window.scrollTo(0, 0);
-    }
-
     setShiny((shiny) => !shiny);
   }
 

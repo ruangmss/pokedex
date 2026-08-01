@@ -1,15 +1,15 @@
-import React from 'react';
-import './Pagination.css';
+import React from "react";
+import "./Pagination.css";
 
 const Pagination = ({ page, updatePage, totalPages }) => {
   function changePage({ target }) {
-    if (target.innerText === 'Próxima') {
+    if (target.innerText === "Próxima") {
       updatePage(page + 1);
-      window.scrollTo(0, 0);
     } else {
       updatePage(page - 1);
-      window.scrollTo(0, 0);
     }
+
+    window.scrollTo(0, 0);
   }
 
   if (totalPages !== 0 && totalPages && page < totalPages) {
